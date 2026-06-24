@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>云南 5 日攻略 · 丽江 × 大理</title>
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.css">
 <style>
   :root{
     --cream:#FBF6EC; --ink:#2B2B2B; --sub:#8a8a8a;
@@ -63,10 +64,10 @@
   .spots .train{display:inline-flex;align-items:center;font-size:13px;color:#888;
     background:#f3f3f3;border:1px dashed #ccc;padding:6px 10px;border-radius:20px}
 
-  .maproute{display:inline-flex;align-items:center;gap:6px;margin-top:12px;
-    font-size:14px;font-weight:700;text-decoration:none;color:#fff;
-    background:var(--green);padding:8px 15px;border-radius:22px}
-  .d2 .maproute,.d4 .maproute{background:var(--lake)}
+  .map{height:240px;border-radius:12px;margin-top:12px;overflow:hidden;
+    border:1px solid #e3e3e3;z-index:0}
+  .maphint{font-size:12px;color:#9a9a9a;margin-top:5px}
+  .leaflet-container{background:#e9efe9}
 
   .footer{background:var(--blue);color:#EAF4F8;border-radius:18px;padding:20px 22px;margin-top:20px}
   .footer h3{color:var(--gold);font-size:18px;margin-bottom:10px}
@@ -88,7 +89,7 @@
 
   <div class="howto">
     每天的安排都<b>按先后顺序</b>排好了 ——<br>
-    🏨 <span class="k2">住哪里</span> 一行点「查价格」看大概房价 · <span class="k1">①②③ 蓝色景点</span> 按顺序点开看实景图 · 🗺️ <b>在地图看今日路线</b> 显示从哪一站走到哪一站。国内、海外都能打开。
+    🏨 <span class="k2">住哪里</span> 点「查价格」看大概房价 · <span class="k1">①②③ 蓝色景点</span> 按顺序点开看实景图 · 🗺️ 下方<b>小地图</b>把当天全部站点和 🏨住宿 都按顺序标出来，连成一条线。国内、海外都能打开。
   </div>
 
   <!-- DAY 1 -->
@@ -108,7 +109,8 @@
         <span class="arr">→</span>
         <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江酒吧街" target="_blank" rel="noopener"><span class="n">④</span>酒吧街</a>
       </div>
-      <a class="maproute" href="https://api.map.baidu.com/direction?origin=丽江古城&destination=木府&mode=walking&region=丽江&output=html&src=webapp" target="_blank" rel="noopener">🗺️ 在地图看今日路线 ›</a>
+      <div class="map" id="map1"></div>
+      <div class="maphint">🏨=住宿 · ①②③④=按顺序游玩 · 点数字看是哪一站</div>
       <div class="tip">第一天慢节奏，先适应海拔（约 2400m）</div>
     </div>
   </div>
@@ -119,7 +121,7 @@
     <div class="day-body">
       <div class="stay"><span class="ic">🏨</span>住：<b>丽江古城内客栈</b>（同 Day 1，连住不挪窝）
         <a class="price" href="https://www.baidu.com/s?wd=丽江古城客栈 价格 携程 美团" target="_blank" rel="noopener">查价格 ›</a></div>
-      <p>大索道登顶 4506m，雪山近在眼前；下山逛蓝月谷碧水、看《印象丽江》演出，傍晚回古城。</p>
+      <p>从古城往北上玉龙雪山，大索道登顶 4506m；下山逛蓝月谷碧水、看《印象丽江》演出，傍晚回古城。</p>
       <div class="routelabel">今日路线（按顺序）</div>
       <div class="spots">
         <a href="https://image.baidu.com/search/index?tn=baiduimage&word=玉龙雪山" target="_blank" rel="noopener"><span class="n">①</span>玉龙雪山</a>
@@ -130,7 +132,8 @@
         <span class="arr">→</span>
         <a href="https://image.baidu.com/search/index?tn=baiduimage&word=印象丽江演出" target="_blank" rel="noopener"><span class="n">④</span>印象丽江</a>
       </div>
-      <a class="maproute" href="https://api.map.baidu.com/direction?origin=玉龙雪山&destination=蓝月谷&mode=driving&region=丽江&output=html&src=webapp" target="_blank" rel="noopener">🗺️ 在地图看今日路线 ›</a>
+      <div class="map" id="map2"></div>
+      <div class="maphint">🏨古城在南，雪山景点在北约 30km，当天往返</div>
       <div class="tip">门票+索道提前订，备氧气瓶与巧克力，慢走防高反</div>
     </div>
   </div>
@@ -141,7 +144,7 @@
     <div class="day-body">
       <div class="stay"><span class="ic">🏨</span>住：<b>大理洱海海景客栈</b>（才村/双廊一带，连住 2 晚 · 淡季约 ¥250–600/晚）
         <a class="price" href="https://www.baidu.com/s?wd=大理洱海海景客栈 价格 携程 美团" target="_blank" rel="noopener">查价格 ›</a></div>
-      <p>上午束河古镇 / 拉市海骑马划船；午后动车赴大理（约 2 小时）；入住洱海客栈，傍晚逛大理古城人民路。</p>
+      <p>上午束河古镇 / 拉市海骑马划船（仍在丽江）；午后动车赴大理（约 2 小时）；入住洱海客栈，傍晚逛大理古城人民路。</p>
       <div class="routelabel">今日路线（按顺序）</div>
       <div class="spots">
         <a href="https://image.baidu.com/search/index?tn=baiduimage&word=束河古镇" target="_blank" rel="noopener"><span class="n">①</span>束河古镇</a>
@@ -154,7 +157,8 @@
         <span class="arr">→</span>
         <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理人民路" target="_blank" rel="noopener"><span class="n">④</span>人民路</a>
       </div>
-      <a class="maproute" href="https://api.map.baidu.com/direction?origin=大理古城&destination=大理人民路&mode=walking&region=大理&output=html&src=webapp" target="_blank" rel="noopener">🗺️ 在地图看大理古城段路线 ›</a>
+      <div class="map" id="map3"></div>
+      <div class="maphint">地图为下午到大理后的部分（③④+🏨）；①②束河/拉市海在丽江，坐动车过来</div>
       <div class="tip">客栈选海东 / 双廊一带，推窗即洱海</div>
     </div>
   </div>
@@ -176,7 +180,8 @@
         <span class="arr">→</span>
         <a href="https://image.baidu.com/search/index?tn=baiduimage&word=洱海S湾天空之镜" target="_blank" rel="noopener"><span class="n">④</span>S湾天空之镜</a>
       </div>
-      <a class="maproute" href="https://api.map.baidu.com/direction?origin=喜洲古镇&destination=双廊&mode=driving&region=大理&output=html&src=webapp" target="_blank" rel="noopener">🗺️ 在地图看洱海环线 ›</a>
+      <div class="map" id="map4"></div>
+      <div class="maphint">🏨=住宿 · ①→②→③→④ 沿洱海西岸往北环游</div>
       <div class="tip">拼包车一天最省，司机兼当向导</div>
     </div>
   </div>
@@ -195,7 +200,8 @@
         <span class="arr">→</span>
         <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理鲜花饼" target="_blank" rel="noopener"><span class="n">③</span>古城购物</a>
       </div>
-      <a class="maproute" href="https://api.map.baidu.com/direction?origin=苍山&destination=喜林苑&mode=driving&region=大理&output=html&src=webapp" target="_blank" rel="noopener">🗺️ 在地图看今日路线 ›</a>
+      <div class="map" id="map5"></div>
+      <div class="maphint">①②③=按顺序，当天退房返程，无住宿点</div>
       <div class="tip">返程航班别订太早，留足赶机时间</div>
     </div>
   </div>
@@ -208,8 +214,56 @@
     <p>· 云南 5 天预算约 ¥3000–3500 / 人（住宿+当地交通+玩+吃）</p>
   </div>
 
-  <div class="credit">蓝色①②③ = 百度图片实景 · 🗺️ = 百度地图路线 · 查价格 = 房价参考<br>价格为淡季参考，实际以预订当日为准</div>
+  <div class="credit">蓝色①②③ = 百度图片实景 · 小地图 = 高德底图 · 站点为大致位置示意<br>价格为淡季参考，实际以预订当日为准</div>
 
 </div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+  var MAPS = [
+    { el:'map1', start:1,
+      hotel:{ ll:[26.8762,100.2350], t:'住宿 · 丽江古城客栈' },
+      stops:[ ['丽江古城',26.8770,100.2347], ['四方街',26.8778,100.2338], ['木府',26.8742,100.2343], ['酒吧街',26.8773,100.2356] ] },
+    { el:'map2', start:1,
+      hotel:{ ll:[26.8762,100.2350], t:'住宿 · 丽江古城客栈' },
+      stops:[ ['玉龙雪山',27.1015,100.1758], ['大索道',27.1010,100.1752], ['蓝月谷',27.0875,100.1828], ['印象丽江',27.0928,100.1882] ] },
+    { el:'map3', start:3,
+      hotel:{ ll:[25.6985,100.1880], t:'住宿 · 才村/双廊洱海客栈' },
+      stops:[ ['大理古城',25.6922,100.1618], ['人民路',25.6905,100.1648] ] },
+    { el:'map4', start:1,
+      hotel:{ ll:[25.6985,100.1880], t:'住宿 · 才村/双廊洱海客栈' },
+      stops:[ ['喜洲古镇',25.8650,100.1095], ['海舌公园',25.8730,100.1280], ['双廊',25.9325,100.1820], ['S湾天空之镜',25.9100,100.1835] ] },
+    { el:'map5', start:1,
+      stops:[ ['苍山',25.6650,100.1450], ['喜林苑',25.8600,100.1085], ['古城购物',25.6922,100.1618] ] }
+  ];
+
+  function numIcon(n){
+    return L.divIcon({className:'',iconSize:[26,26],iconAnchor:[13,13],
+      html:'<div style="background:#2C7DA0;color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45)">'+n+'</div>'});
+  }
+  function hotelIcon(){
+    return L.divIcon({className:'',iconSize:[30,30],iconAnchor:[15,15],
+      html:'<div style="background:#C8603F;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45)">🏨</div>'});
+  }
+
+  function buildMap(cfg){
+    var m = L.map(cfg.el,{zoomControl:true,scrollWheelZoom:false,attributionControl:false});
+    L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}',
+      {subdomains:['1','2','3','4'],maxZoom:18,minZoom:3}).addTo(m);
+    var pts=[], bounds=[];
+    cfg.stops.forEach(function(s,i){
+      var ll=[s[1],s[2]]; pts.push(ll); bounds.push(ll);
+      L.marker(ll,{icon:numIcon(cfg.start+i)}).addTo(m).bindPopup((cfg.start+i)+'. '+s[0]);
+    });
+    if(pts.length>1){ L.polyline(pts,{color:'#C8603F',weight:3,dashArray:'7,7',opacity:.85}).addTo(m); }
+    if(cfg.hotel){ L.marker(cfg.hotel.ll,{icon:hotelIcon()}).addTo(m).bindPopup(cfg.hotel.t); bounds.push(cfg.hotel.ll); }
+    m.fitBounds(L.latLngBounds(bounds).pad(0.28));
+  }
+
+  window.addEventListener('load',function(){
+    if(typeof L==='undefined'){return;}
+    MAPS.forEach(function(cfg){ try{ buildMap(cfg); }catch(e){} });
+  });
+</script>
 </body>
 </html>
