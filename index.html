@@ -12,34 +12,26 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{
     font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif;
-    background:var(--cream); color:var(--ink); line-height:1.6;
-    padding:0 0 60px;
+    background:var(--cream); color:var(--ink); line-height:1.6; padding:0 0 60px;
   }
   .wrap{max-width:760px;margin:0 auto;padding:0 16px}
 
-  header{
-    background:var(--blue); color:#fff; padding:38px 24px 30px;
-    border-radius:0 0 26px 26px; position:relative; overflow:hidden;
-  }
+  header{background:var(--blue); color:#fff; padding:38px 24px 30px;
+    border-radius:0 0 26px 26px; position:relative; overflow:hidden;}
   header .sun{position:absolute;top:24px;right:48px;width:74px;height:74px;border-radius:50%;background:var(--gold)}
   header h1{font-size:40px;font-weight:800;letter-spacing:2px;position:relative}
   header .zh{font-size:22px;font-weight:600;color:var(--gold);margin-top:6px;position:relative}
   header .meta{font-size:14px;color:#D9ECF2;margin-top:10px;position:relative}
   .ridge{margin-top:18px;height:46px;
-    background:
-      linear-gradient(135deg,transparent 49%,#3E7E55 50%) 0 0/56px 46px repeat-x;
-    opacity:.6}
+    background:linear-gradient(135deg,transparent 49%,#3E7E55 50%) 0 0/56px 46px repeat-x;opacity:.6}
 
-  .howto{
-    background:#fff;border:1px solid #eee;border-radius:14px;
-    padding:14px 18px;margin:18px 0 8px;font-size:14px;color:#555
-  }
+  .howto{background:#fff;border:1px solid #eee;border-radius:14px;
+    padding:14px 18px;margin:18px 0 8px;font-size:14px;color:#555;line-height:1.8}
   .howto b{color:var(--terra)}
+  .howto .k1{color:var(--blue);font-weight:700}
+  .howto .k2{color:#9a6a1a;font-weight:700}
 
-  .day{
-    background:#fff;border-radius:18px;margin:18px 0;overflow:hidden;
-    box-shadow:0 2px 10px rgba(0,0,0,.05);
-  }
+  .day{background:#fff;border-radius:18px;margin:18px 0;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05);}
   .day-head{display:flex;align-items:center;gap:14px;padding:16px 20px;color:#fff}
   .d1 .day-head{background:var(--terra)} .d2 .day-head{background:var(--blue)}
   .d3 .day-head{background:var(--green)} .d4 .day-head{background:var(--lake)}
@@ -49,19 +41,32 @@
   .day-head .t{font-size:21px;font-weight:800}
   .day-body{padding:16px 20px 20px}
   .day-body p{font-size:15px;color:#444;margin-bottom:10px}
-  .day-body .tip{font-size:13px;color:var(--sub);margin-top:4px}
+  .day-body .tip{font-size:13px;color:var(--sub);margin-top:10px}
 
-  .spots{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 4px}
-  .spots a{
-    display:inline-flex;align-items:center;gap:5px;
-    text-decoration:none;font-size:14px;font-weight:600;
-    color:var(--blue);background:#EAF4F8;border:1px solid #d7e9f0;
-    padding:7px 13px;border-radius:20px;transition:.15s;
-  }
+  .stay{display:flex;flex-wrap:wrap;align-items:center;gap:6px;
+    background:#FBF3E7;border:1px solid #f0e2c8;border-radius:12px;
+    padding:9px 13px;margin-bottom:12px;font-size:14px;color:#7a5a2a}
+  .stay .ic{font-size:15px}
+  .stay b{color:#9a6a1a}
+  .stay .price{color:#fff;background:#C8603F;font-weight:700;text-decoration:none;
+    padding:4px 11px;border-radius:16px;font-size:13px;white-space:nowrap;margin-left:auto}
+
+  .routelabel{font-size:13px;color:#888;margin:2px 0 7px;font-weight:600}
+  .spots{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:2px 0 4px}
+  .spots a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;
+    font-size:14px;font-weight:600;color:var(--blue);background:#EAF4F8;
+    border:1px solid #d7e9f0;padding:7px 12px;border-radius:20px;transition:.15s}
   .spots a:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
-  .spots a.map{color:var(--terra);background:#FBEDE7;border-color:#f0d6cb}
-  .spots a.map:hover{background:var(--terra);color:#fff;border-color:var(--terra)}
-  .spots a .pin{font-size:12px}
+  .spots a .n{font-weight:800;color:var(--terra)}
+  .spots a:hover .n{color:#fff}
+  .spots .arr{color:#b9b9b9;font-weight:800;font-size:13px}
+  .spots .train{display:inline-flex;align-items:center;font-size:13px;color:#888;
+    background:#f3f3f3;border:1px dashed #ccc;padding:6px 10px;border-radius:20px}
+
+  .maproute{display:inline-flex;align-items:center;gap:6px;margin-top:12px;
+    font-size:14px;font-weight:700;text-decoration:none;color:#fff;
+    background:var(--green);padding:8px 15px;border-radius:22px}
+  .d2 .maproute,.d4 .maproute{background:var(--lake)}
 
   .footer{background:var(--blue);color:#EAF4F8;border-radius:18px;padding:20px 22px;margin-top:20px}
   .footer h3{color:var(--gold);font-size:18px;margin-bottom:10px}
@@ -82,22 +87,29 @@
 <div class="wrap">
 
   <div class="howto">
-    👉 点 <b>蓝色标签</b> 看景点实景照片(百度图片),点 <b>红色「地图」</b> 看位置(高德地图)。国内、海外都能打开。
+    每天的安排都<b>按先后顺序</b>排好了 ——<br>
+    🏨 <span class="k2">住哪里</span> 一行点「查价格」看大概房价 · <span class="k1">①②③ 蓝色景点</span> 按顺序点开看实景图 · 🗺️ <b>在地图看今日路线</b> 显示从哪一站走到哪一站。国内、海外都能打开。
   </div>
 
   <!-- DAY 1 -->
   <div class="day d1">
     <div class="day-head"><span class="num">DAY 1</span><span class="t">抵达丽江 · 古城漫步</span></div>
     <div class="day-body">
-      <p>入住丽江古城客栈放下行李,午后开始慢逛,晚上酒吧街小酌、尝地道小吃。</p>
+      <div class="stay"><span class="ic">🏨</span>住：<b>丽江古城内客栈</b>（狮子山/七一街，连住 2 晚 · 淡季约 ¥180–450/晚）
+        <a class="price" href="https://www.baidu.com/s?wd=丽江古城客栈 价格 携程 美团" target="_blank" rel="noopener">查价格 ›</a></div>
+      <p>入住后放下行李，午后慢逛古城，晚上酒吧街小酌、尝地道小吃。</p>
+      <div class="routelabel">今日路线（按顺序）</div>
       <div class="spots">
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江古城" target="_blank" rel="noopener"><span class="pin">📷</span>丽江古城</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江四方街" target="_blank" rel="noopener"><span class="pin">📷</span>四方街</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江木府" target="_blank" rel="noopener"><span class="pin">📷</span>木府</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江酒吧街" target="_blank" rel="noopener"><span class="pin">📷</span>酒吧街</a>
-        <a class="map" href="https://www.amap.com/search?query=丽江古城" target="_blank" rel="noopener"><span class="pin">📍</span>地图</a>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江古城" target="_blank" rel="noopener"><span class="n">①</span>丽江古城</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江四方街" target="_blank" rel="noopener"><span class="n">②</span>四方街</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江木府" target="_blank" rel="noopener"><span class="n">③</span>木府</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江酒吧街" target="_blank" rel="noopener"><span class="n">④</span>酒吧街</a>
       </div>
-      <div class="tip">🏮 第一天慢节奏,先适应海拔(约 2400m)</div>
+      <a class="maproute" href="https://api.map.baidu.com/direction?origin=丽江古城&destination=木府&mode=walking&region=丽江&output=html&src=webapp" target="_blank" rel="noopener">🗺️ 在地图看今日路线 ›</a>
+      <div class="tip">第一天慢节奏，先适应海拔（约 2400m）</div>
     </div>
   </div>
 
@@ -105,15 +117,21 @@
   <div class="day d2">
     <div class="day-head"><span class="num">DAY 2</span><span class="t">玉龙雪山 · 蓝月谷</span></div>
     <div class="day-body">
-      <p>大索道登顶 4506m,雪山近在眼前;下山逛蓝月谷碧水、看《印象丽江》演出,傍晚回古城。</p>
+      <div class="stay"><span class="ic">🏨</span>住：<b>丽江古城内客栈</b>（同 Day 1，连住不挪窝）
+        <a class="price" href="https://www.baidu.com/s?wd=丽江古城客栈 价格 携程 美团" target="_blank" rel="noopener">查价格 ›</a></div>
+      <p>大索道登顶 4506m，雪山近在眼前；下山逛蓝月谷碧水、看《印象丽江》演出，傍晚回古城。</p>
+      <div class="routelabel">今日路线（按顺序）</div>
       <div class="spots">
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=玉龙雪山" target="_blank" rel="noopener"><span class="pin">📷</span>玉龙雪山</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=玉龙雪山大索道" target="_blank" rel="noopener"><span class="pin">📷</span>大索道</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江蓝月谷" target="_blank" rel="noopener"><span class="pin">📷</span>蓝月谷</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=印象丽江演出" target="_blank" rel="noopener"><span class="pin">📷</span>印象丽江</a>
-        <a class="map" href="https://www.amap.com/search?query=玉龙雪山" target="_blank" rel="noopener"><span class="pin">📍</span>地图</a>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=玉龙雪山" target="_blank" rel="noopener"><span class="n">①</span>玉龙雪山</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=玉龙雪山大索道" target="_blank" rel="noopener"><span class="n">②</span>大索道</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江蓝月谷" target="_blank" rel="noopener"><span class="n">③</span>蓝月谷</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=印象丽江演出" target="_blank" rel="noopener"><span class="n">④</span>印象丽江</a>
       </div>
-      <div class="tip">🚠 门票+索道提前订,备氧气瓶与巧克力,慢走防高反</div>
+      <a class="maproute" href="https://api.map.baidu.com/direction?origin=玉龙雪山&destination=蓝月谷&mode=driving&region=丽江&output=html&src=webapp" target="_blank" rel="noopener">🗺️ 在地图看今日路线 ›</a>
+      <div class="tip">门票+索道提前订，备氧气瓶与巧克力，慢走防高反</div>
     </div>
   </div>
 
@@ -121,15 +139,23 @@
   <div class="day d3">
     <div class="day-head"><span class="num">DAY 3</span><span class="t">束河古镇 → 动车赴大理</span></div>
     <div class="day-body">
-      <p>上午逛束河古镇或拉市海骑马划船;午后坐动车赴大理(约 2 小时、¥40),入住洱海海景客栈,傍晚扫街大理古城人民路。</p>
+      <div class="stay"><span class="ic">🏨</span>住：<b>大理洱海海景客栈</b>（才村/双廊一带，连住 2 晚 · 淡季约 ¥250–600/晚）
+        <a class="price" href="https://www.baidu.com/s?wd=大理洱海海景客栈 价格 携程 美团" target="_blank" rel="noopener">查价格 ›</a></div>
+      <p>上午束河古镇 / 拉市海骑马划船；午后动车赴大理（约 2 小时）；入住洱海客栈，傍晚逛大理古城人民路。</p>
+      <div class="routelabel">今日路线（按顺序）</div>
       <div class="spots">
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=束河古镇" target="_blank" rel="noopener"><span class="pin">📷</span>束河古镇</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江拉市海" target="_blank" rel="noopener"><span class="pin">📷</span>拉市海</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理古城" target="_blank" rel="noopener"><span class="pin">📷</span>大理古城</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理人民路" target="_blank" rel="noopener"><span class="pin">📷</span>人民路</a>
-        <a class="map" href="https://www.amap.com/search?query=大理古城" target="_blank" rel="noopener"><span class="pin">📍</span>地图</a>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=束河古镇" target="_blank" rel="noopener"><span class="n">①</span>束河古镇</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=丽江拉市海" target="_blank" rel="noopener"><span class="n">②</span>拉市海</a>
+        <span class="arr">→</span>
+        <span class="train">🚆 动车赴大理</span>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理古城" target="_blank" rel="noopener"><span class="n">③</span>大理古城</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理人民路" target="_blank" rel="noopener"><span class="n">④</span>人民路</a>
       </div>
-      <div class="tip">🚆 客栈选海东 / 双廊一带,推窗即洱海</div>
+      <a class="maproute" href="https://api.map.baidu.com/direction?origin=大理古城&destination=大理人民路&mode=walking&region=大理&output=html&src=webapp" target="_blank" rel="noopener">🗺️ 在地图看大理古城段路线 ›</a>
+      <div class="tip">客栈选海东 / 双廊一带，推窗即洱海</div>
     </div>
   </div>
 
@@ -137,16 +163,21 @@
   <div class="day d4">
     <div class="day-head"><span class="num">DAY 4</span><span class="t">洱海环线 · 躺平主场</span></div>
     <div class="day-body">
-      <p>三人拼包车环洱海一整天:喜洲古镇尝喜洲粑粑、海舌公园、双廊、S 湾天空之镜打卡,晚上海景餐厅看日落。</p>
+      <div class="stay"><span class="ic">🏨</span>住：<b>大理洱海海景客栈</b>（同 Day 3，连住不挪窝）
+        <a class="price" href="https://www.baidu.com/s?wd=大理双廊海景客栈 价格 携程 美团" target="_blank" rel="noopener">查价格 ›</a></div>
+      <p>三人拼包车环洱海一整天：喜洲古镇尝喜洲粑粑，海舌公园、双廊、S 湾天空之镜打卡，晚上海景餐厅看日落。</p>
+      <div class="routelabel">今日路线（按顺序 · 环洱海）</div>
       <div class="spots">
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理洱海" target="_blank" rel="noopener"><span class="pin">📷</span>洱海</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=喜洲古镇" target="_blank" rel="noopener"><span class="pin">📷</span>喜洲古镇</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=洱海海舌公园" target="_blank" rel="noopener"><span class="pin">📷</span>海舌公园</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理双廊" target="_blank" rel="noopener"><span class="pin">📷</span>双廊</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=洱海S湾天空之镜" target="_blank" rel="noopener"><span class="pin">📷</span>S湾天空之镜</a>
-        <a class="map" href="https://www.amap.com/search?query=洱海" target="_blank" rel="noopener"><span class="pin">📍</span>地图</a>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=喜洲古镇" target="_blank" rel="noopener"><span class="n">①</span>喜洲古镇</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=洱海海舌公园" target="_blank" rel="noopener"><span class="n">②</span>海舌公园</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理双廊" target="_blank" rel="noopener"><span class="n">③</span>双廊</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=洱海S湾天空之镜" target="_blank" rel="noopener"><span class="n">④</span>S湾天空之镜</a>
       </div>
-      <div class="tip">⛵ 三人拼包车一天最省,司机兼当向导</div>
+      <a class="maproute" href="https://api.map.baidu.com/direction?origin=喜洲古镇&destination=双廊&mode=driving&region=大理&output=html&src=webapp" target="_blank" rel="noopener">🗺️ 在地图看洱海环线 ›</a>
+      <div class="tip">拼包车一天最省，司机兼当向导</div>
     </div>
   </div>
 
@@ -154,27 +185,30 @@
   <div class="day d5">
     <div class="day-head"><span class="num">DAY 5</span><span class="t">苍山 · 喜林苑 → 返程</span></div>
     <div class="day-body">
-      <p>上午苍山感通索道,或去喜林苑吃早餐拍照;古城买点鲜花饼、银器、普洱;午后大理出发飞广州 / 接下一程。</p>
+      <div class="stay"><span class="ic">🧳</span>当天午后返程，<b>不留宿</b>（退房后寄存行李，赶傍晚航班）</div>
+      <p>上午苍山感通索道，或去喜林苑吃早餐拍照；古城买点鲜花饼、银器、普洱；午后大理 → 广州 / 接下一程。</p>
+      <div class="routelabel">今日路线（按顺序）</div>
       <div class="spots">
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理苍山" target="_blank" rel="noopener"><span class="pin">📷</span>苍山</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=苍山感通索道" target="_blank" rel="noopener"><span class="pin">📷</span>感通索道</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=喜林苑" target="_blank" rel="noopener"><span class="pin">📷</span>喜林苑</a>
-        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理鲜花饼" target="_blank" rel="noopener"><span class="pin">📷</span>鲜花饼</a>
-        <a class="map" href="https://www.amap.com/search?query=大理苍山" target="_blank" rel="noopener"><span class="pin">📍</span>地图</a>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理苍山" target="_blank" rel="noopener"><span class="n">①</span>苍山</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=喜林苑" target="_blank" rel="noopener"><span class="n">②</span>喜林苑</a>
+        <span class="arr">→</span>
+        <a href="https://image.baidu.com/search/index?tn=baiduimage&word=大理鲜花饼" target="_blank" rel="noopener"><span class="n">③</span>古城购物</a>
       </div>
-      <div class="tip">🍵 返程航班别订太早,留足赶机时间</div>
+      <a class="maproute" href="https://api.map.baidu.com/direction?origin=苍山&destination=喜林苑&mode=driving&region=大理&output=html&src=webapp" target="_blank" rel="noopener">🗺️ 在地图看今日路线 ›</a>
+      <div class="tip">返程航班别订太早，留足赶机时间</div>
     </div>
   </div>
 
   <div class="footer">
     <h3>出行贴士</h3>
-    <p>· 11 月云南淡季:白天暖、早晚凉,带件薄外套和防晒</p>
-    <p>· 高原紫外线强,墨镜帽子润唇膏;雪山段慢走防高反</p>
-    <p>· 客栈 / 包车 / 雪山票提前订,淡季更便宜</p>
-    <p>· 云南 5 天预算约 ¥3000–3500 / 人(住宿+当地交通+玩+吃)</p>
+    <p>· 11 月云南淡季：白天暖、早晚凉，带件薄外套和防晒</p>
+    <p>· 高原紫外线强，墨镜帽子润唇膏；雪山段慢走防高反</p>
+    <p>· 客栈 / 包车 / 雪山票提前订，淡季更便宜</p>
+    <p>· 云南 5 天预算约 ¥3000–3500 / 人（住宿+当地交通+玩+吃）</p>
   </div>
 
-  <div class="credit">蓝色标签 = 百度图片实景 · 红色地图 = 高德地图 · 国内外均可打开<br>行情以购票当日为准</div>
+  <div class="credit">蓝色①②③ = 百度图片实景 · 🗺️ = 百度地图路线 · 查价格 = 房价参考<br>价格为淡季参考，实际以预订当日为准</div>
 
 </div>
 </body>
