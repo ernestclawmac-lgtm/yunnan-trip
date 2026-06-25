@@ -9,6 +9,8 @@
   :root{
     --cream:#FBF6EC; --ink:#2B2B2B; --sub:#8a8a8a;
     --blue:#2C7DA0; --green:#3E7E55; --terra:#C8603F; --lake:#4AA3C7; --gold:#F2C14E;
+    --aWarm:#FCEFE7; --aBord:#E7C2B0; --aTrans:#FBEBE2; --aTransB:#f0d3c4;
+    --bCool:#EAF3F8; --bBord:#BBD8E7; --bTrans:#E7F1F7; --bTransB:#cfe2ee;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif;
@@ -28,37 +30,64 @@
   .ylink{display:inline-block;margin-top:8px;font-size:14px;font-weight:700;color:#fff;
     background:var(--green);text-decoration:none;padding:8px 15px;border-radius:22px}
 
-  .planband{display:flex;align-items:center;gap:10px;margin:26px 0 4px;padding:14px 18px;
-    border-radius:16px;color:#fff;font-weight:800}
-  .planA{background:var(--terra)} .planB{background:var(--blue)}
-  .planband .pt{font-size:22px}
-  .planband .tag{font-size:12px;font-weight:700;background:rgba(255,255,255,.25);
-    padding:3px 10px;border-radius:20px;margin-left:auto}
+  /* quick compare */
+  .compare{margin:14px 0 4px}
+  .compare .crow{display:flex;align-items:flex-start;gap:10px;border-radius:14px;
+    padding:12px 14px;margin-bottom:8px;font-size:13.5px;line-height:1.65}
+  .compare .crow.A{background:var(--aWarm);border:1px solid var(--aBord)}
+  .compare .crow.B{background:var(--bCool);border:1px solid var(--bBord)}
+  .compare .cb{width:34px;height:34px;border-radius:50%;color:#fff;font-weight:800;font-size:18px;
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .compare .A .cb{background:var(--terra)} .compare .B .cb{background:var(--blue)}
+  .compare .ct b{font-size:14.5px}
+  .compare .A .ct b{color:var(--terra)} .compare .B .ct b{color:var(--blue)}
 
-  .sum{background:#fff;border:1px solid #eee;border-radius:14px;padding:12px 16px;margin:10px 0;
-    font-size:14px;color:#444;line-height:1.85}
-  .sum b{color:var(--terra)}
-  .sum .route{color:var(--blue);font-weight:700}
+  /* PLAN PANEL */
+  .plan{border-radius:20px;padding:4px 14px 16px;margin:24px 0}
+  .plan.A{background:var(--aWarm);border:2px solid var(--aBord)}
+  .plan.B{background:var(--bCool);border:2px solid var(--bBord)}
 
-  .map{height:300px;border-radius:14px;margin:12px 0 6px;overflow:hidden;border:1px solid #e3e3e3;z-index:0}
-  .maphint{font-size:12px;color:#9a9a9a;margin-bottom:6px}
+  .planband{display:flex;align-items:center;gap:12px;margin:14px 0 10px;padding:14px 16px;
+    border-radius:16px;color:#fff}
+  .plan.A .planband{background:var(--terra)} .plan.B .planband{background:var(--blue)}
+  .planband .badge{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.22);
+    border:2px solid #fff;display:flex;align-items:center;justify-content:center;
+    font-size:26px;font-weight:800;flex:0 0 auto}
+  .planband .pt{font-size:20px;font-weight:800;line-height:1.25}
+  .planband .psub{font-size:12.5px;color:rgba(255,255,255,.9);font-weight:600}
+  .planband .tag{font-size:12px;font-weight:800;background:rgba(255,255,255,.25);
+    padding:4px 11px;border-radius:20px;margin-left:auto;white-space:nowrap}
+
+  .sum{background:#fff;border-radius:12px;padding:11px 15px;margin:0 0 10px;
+    font-size:13.5px;color:#444;line-height:1.8}
+  .sum .route{font-weight:800}
+  .plan.A .sum .route{color:var(--terra)} .plan.B .sum .route{color:var(--blue)}
+  .plan.A .sum b{color:var(--terra)} .plan.B .sum b{color:var(--blue)}
+
+  .map{height:290px;border-radius:14px;margin:4px 0 6px;overflow:hidden;border:1px solid #e3e3e3;z-index:0}
+  .maphint{font-size:12px;color:#8a8a8a;margin-bottom:6px}
   .leaflet-container{background:#dfe7ef}
 
-  .stage{background:#fff;border-radius:16px;margin:12px 0;overflow:hidden;box-shadow:0 2px 9px rgba(0,0,0,.05)}
-  .stage-head{display:flex;align-items:center;gap:12px;padding:13px 18px;color:#fff}
-  .s1{background:#C8603F}.s2{background:#2C7DA0}.s3{background:#3E7E55}.s4{background:#4AA3C7}.s5{background:#5C9A6B}
-  .stage-head .n{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.25);
-    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex:0 0 auto}
-  .stage-head .t{font-size:18px;font-weight:800}
+  .stage{background:#fff;border-radius:14px;margin:10px 0;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.05)}
+  .stage-head{display:flex;align-items:center;gap:12px;padding:12px 16px;color:#fff}
+  .plan.A .stage-head{background:var(--terra)} .plan.B .stage-head{background:var(--blue)}
+  .stage-head .n{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.25);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:0 0 auto}
+  .stage-head .t{font-size:17px;font-weight:800}
   .stage-head .days{font-size:12px;font-weight:700;background:rgba(255,255,255,.22);
     padding:3px 9px;border-radius:18px;margin-left:auto;white-space:nowrap}
-  .stage-body{padding:13px 18px 16px}
-  .stage-body p{font-size:14.5px;color:#444;margin-bottom:6px}
-  .trans{background:#EAF4F8;border:1px solid #d7e9f0;border-radius:11px;
-    padding:8px 12px;margin:4px 0 8px;font-size:13.5px;color:#2c6079;line-height:1.7}
-  .trans b{color:var(--blue)}
+  .stage-body{padding:12px 16px 14px}
+  .stage-body p{font-size:14px;color:#444;margin-bottom:4px}
+  .trans{border-radius:10px;padding:8px 12px;margin:2px 0 8px;font-size:13px;line-height:1.7}
+  .plan.A .trans{background:var(--aTrans);border:1px solid var(--aTransB);color:#9a5234}
+  .plan.B .trans{background:var(--bTrans);border:1px solid var(--bTransB);color:#2c6079}
+  .plan.A .trans b{color:var(--terra)} .plan.B .trans b{color:var(--blue)}
   .free{display:inline-block;font-size:12px;font-weight:700;color:#3E7E55;background:#e9f3ec;
     border:1px solid #cfe6d6;padding:2px 9px;border-radius:14px}
+
+  .cost{text-align:center;font-size:14px;font-weight:800;margin:6px 0 2px;padding:9px;border-radius:12px}
+  .plan.A .cost{background:#fff;color:var(--terra);border:1px dashed var(--aBord)}
+  .plan.B .cost{background:#fff;color:var(--blue);border:1px dashed var(--bBord)}
 
   .footer{background:var(--blue);color:#EAF4F8;border-radius:18px;padding:20px 22px;margin-top:24px}
   .footer h3{color:var(--gold);font-size:18px;margin-bottom:10px}
@@ -79,110 +108,125 @@
 
   <div class="intro">
     两个人从<b>多伦多</b>飞、一个本在南通。南通、顺德住朋友家 <span class="free">不花住宿费</span>。
-    下面 <b>方案 A</b>（先婚礼后旅游）和 <b>方案 B</b>（先旅游后婚礼）整条路线、交通、费用都列好了。<br>
     国际机票建议订<b>「上海进 / 广州（或香港）出」联程</b>，省一大段折返。云南那 5 天的细节单独成页：
     <a class="ylink" href="https://ernestclawmac-lgtm.github.io/yunnan-trip/" target="_blank" rel="noopener">👉 云南 5 天详细攻略 ›</a>
   </div>
 
+  <!-- QUICK COMPARE -->
+  <div class="compare">
+    <div class="crow A"><span class="cb">A</span><div class="ct">
+      <b>方案 A · 先婚礼，后旅游</b>（★推荐）<br>
+      上海→南通→丽江→大理→广州/顺德 · 一路向南不折返 · 交通约 <b>¥1,680/人</b></div></div>
+    <div class="crow B"><span class="cb">B</span><div class="ct">
+      <b>方案 B · 先旅游，后婚礼</b><br>
+      上海→丽江→大理→南通→广州/顺德 · 先倒时差婚礼状态好、但要折返 · 交通约 <b>¥2,400/人</b></div></div>
+  </div>
+
   <!-- ===================== PLAN A ===================== -->
-  <div class="planband planA"><span class="pt">方案 A</span> 先婚礼，后旅游
-    <span class="tag">★ 推荐 · 不走回头路</span></div>
-
-  <div class="sum">
-    <span class="route">路线：上海 → 南通 → 丽江 → 大理 → 广州/顺德 → 回程</span><br>
-    一路向南、几乎不折返，最后从广东出境最顺。交通费（不含国际机票）约 <b>¥1,680/人</b>。
-  </div>
-
-  <div class="map" id="mapA"></div>
-  <div class="maphint">数字 = 城市先后顺序 · 虚线 = 走的路线（A 一路向南）</div>
-
-  <div class="stage s1">
-    <div class="stage-head"><span class="n">1</span><span class="t">✈️ 抵达中国</span><span class="days">Day 1–2</span></div>
-    <div class="stage-body">
-      <div class="trans">✈️ 多伦多 → 上海浦东 直飞约 <b>13–15 小时</b>；🚄 浦东 → 南通高铁 <b>¥77 · 约 1.5h</b>。</div>
-      <p>落地上海，高铁直接到南通，先和家人会合、休整倒时差。</p>
+  <section class="plan A">
+    <div class="planband">
+      <span class="badge">A</span>
+      <div><div class="pt">方案 A · 先婚礼，后旅游</div><div class="psub">一路向南 · 不走回头路</div></div>
+      <span class="tag">★ 推荐</span>
     </div>
-  </div>
 
-  <div class="stage s2">
-    <div class="stage-head"><span class="n">2</span><span class="t">🎉 南通 · 婚礼</span><span class="days">Day 2–4</span></div>
-    <div class="stage-body">
-      <p><b>11/1 Yao 婚礼</b> 🎊，前后陪家人、走动走动。住南通家里 <span class="free">不花钱</span>。</p>
+    <div class="sum">
+      <span class="route">上海 → 南通 → 丽江 → 大理 → 广州/顺德 → 回程</span><br>
+      几乎不折返，最后从广东出境最顺。交通费（不含国际机票）约 <b>¥1,680/人</b>。
     </div>
-  </div>
 
-  <div class="stage s3">
-    <div class="stage-head"><span class="n">3</span><span class="t">🏔 云南 5 天</span><span class="days">Day 4–9</span></div>
-    <div class="stage-body">
-      <div class="trans">✈️ 南通/上海 → 丽江 飞机 约 <b>¥600 · 4h</b>（高铁要 18h，不考虑）。</div>
-      <p>丽江 2 晚（古城 + 玉龙雪山）+ 大理 3 晚（洱海躺平）。详细每天安排见上方「云南 5 天详细攻略」。</p>
-    </div>
-  </div>
+    <div class="map" id="mapA"></div>
+    <div class="maphint">🔴 橙色 = 方案 A · 数字是城市先后顺序 · 一路向南</div>
 
-  <div class="stage s4">
-    <div class="stage-head"><span class="n">4</span><span class="t">🍲 顺德 · 陪 Simon</span><span class="days">Day 9–12</span></div>
-    <div class="stage-body">
-      <div class="trans">✈️ 大理 → 广州 飞机 约 <b>¥900</b>；🚆 广州 → 顺德 城际/地铁 <b>¥30 · 40min</b>。</div>
-      <p>顺德 3 晚，陪 Simon、吃遍顺德双皮奶与鱼生。住顺德 <span class="free">不花钱</span>。</p>
+    <div class="stage">
+      <div class="stage-head"><span class="n">1</span><span class="t">✈️ 抵达中国</span><span class="days">Day 1–2</span></div>
+      <div class="stage-body">
+        <div class="trans">✈️ 多伦多 → 上海浦东 直飞约 <b>13–15 小时</b>；🚄 浦东 → 南通高铁 <b>¥77 · 约 1.5h</b>。</div>
+        <p>落地上海，高铁直接到南通，先和家人会合、休整倒时差。</p>
+      </div>
     </div>
-  </div>
+    <div class="stage">
+      <div class="stage-head"><span class="n">2</span><span class="t">🎉 南通 · 婚礼</span><span class="days">Day 2–4</span></div>
+      <div class="stage-body">
+        <p><b>11/1 Yao 婚礼</b> 🎊，前后陪家人、走动走动。住南通家里 <span class="free">不花钱</span>。</p>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-head"><span class="n">3</span><span class="t">🏔 云南 5 天</span><span class="days">Day 4–9</span></div>
+      <div class="stage-body">
+        <div class="trans">✈️ 南通/上海 → 丽江 飞机 约 <b>¥600 · 4h</b>（高铁要 18h，不考虑）。</div>
+        <p>丽江 2 晚（古城 + 玉龙雪山）+ 大理 3 晚（洱海躺平）。详见「云南 5 天详细攻略」。</p>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-head"><span class="n">4</span><span class="t">🍲 顺德 · 陪 Simon</span><span class="days">Day 9–12</span></div>
+      <div class="stage-body">
+        <div class="trans">✈️ 大理 → 广州 飞机 约 <b>¥900</b>；🚆 广州 → 顺德 城际/地铁 <b>¥30 · 40min</b>。</div>
+        <p>顺德 3 晚，陪 Simon、吃遍顺德双皮奶与鱼生。住顺德 <span class="free">不花钱</span>。</p>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-head"><span class="n">5</span><span class="t">✈️ 返程</span><span class="days">Day 12–13</span></div>
+      <div class="stage-body">
+        <p>顺德 → 广州 / 香港 → 多伦多。联程机票直接从广州或香港回，不用北上回上海。</p>
+      </div>
+    </div>
 
-  <div class="stage s5">
-    <div class="stage-head"><span class="n">5</span><span class="t">✈️ 返程</span><span class="days">Day 12–13</span></div>
-    <div class="stage-body">
-      <p>顺德 → 广州 / 香港 → 多伦多。建议联程机票从广州或香港直接回，不用再北上回上海。</p>
-    </div>
-  </div>
+    <div class="cost">方案 A 交通费合计 ≈ ¥1,680 / 人（不含国际机票）</div>
+  </section>
 
   <!-- ===================== PLAN B ===================== -->
-  <div class="planband planB"><span class="pt">方案 B</span> 先旅游，后婚礼
-    <span class="tag">婚礼当天状态最好</span></div>
-
-  <div class="sum">
-    <span class="route">路线：上海 → 丽江 → 大理 → 南通 → 顺德 → 回程</span><br>
-    先去云南把时差倒过来，婚礼当天精神最好；代价是云南→南通要折返、多一段长途，交通费约 <b>¥2,400/人</b>。
-  </div>
-
-  <div class="map" id="mapB"></div>
-  <div class="maphint">数字 = 城市先后顺序 · 看得出 B 在云南和南通之间有一段折返</div>
-
-  <div class="stage s1">
-    <div class="stage-head"><span class="n">1</span><span class="t">✈️ 抵达 + 直飞云南</span><span class="days">Day 1–2</span></div>
-    <div class="stage-body">
-      <div class="trans">✈️ 多伦多 → 上海浦东（约 13–15h）→ 当天/次日 ✈️ 飞丽江 约 <b>¥600</b>。</div>
-      <p>落地后直奔云南，先用度假节奏把时差和状态调整好。</p>
+  <section class="plan B">
+    <div class="planband">
+      <span class="badge">B</span>
+      <div><div class="pt">方案 B · 先旅游，后婚礼</div><div class="psub">先倒时差 · 婚礼当天状态最好</div></div>
+      <span class="tag">有折返</span>
     </div>
-  </div>
 
-  <div class="stage s3">
-    <div class="stage-head"><span class="n">2</span><span class="t">🏔 云南 5 天</span><span class="days">Day 2–7</span></div>
-    <div class="stage-body">
-      <p>丽江 2 晚 + 大理 3 晚，洱海边躺平、调好时差。详细见「云南 5 天详细攻略」。</p>
+    <div class="sum">
+      <span class="route">上海 → 丽江 → 大理 → 南通 → 广州/顺德 → 回程</span><br>
+      先去云南把时差倒过来；代价是云南→南通要折返、多一段长途。交通费约 <b>¥2,400/人</b>。
     </div>
-  </div>
 
-  <div class="stage s2">
-    <div class="stage-head"><span class="n">3</span><span class="t">🎉 南通 · 婚礼</span><span class="days">Day 7–10</span></div>
-    <div class="stage-body">
-      <div class="trans">✈️ 大理 → 上海/南通 飞机 约 <b>¥1,000</b>（往东北飞回，这段是折返）。</div>
-      <p><b>11/1 Yao 婚礼</b> 🎊，状态满满地参加。住南通家里 <span class="free">不花钱</span>。</p>
-    </div>
-  </div>
+    <div class="map" id="mapB"></div>
+    <div class="maphint">🔵 蓝色 = 方案 B · 看得出云南↔南通之间有一段折返</div>
 
-  <div class="stage s4">
-    <div class="stage-head"><span class="n">4</span><span class="t">🍲 顺德 · 陪 Simon</span><span class="days">Day 10–13</span></div>
-    <div class="stage-body">
-      <div class="trans">✈️ 南通 → 广州 飞机 约 <b>¥700</b>；🚆 广州 → 顺德 城际 <b>¥30</b>。</div>
-      <p>顺德 3 晚，陪 Simon、吃美食。住顺德 <span class="free">不花钱</span>。</p>
+    <div class="stage">
+      <div class="stage-head"><span class="n">1</span><span class="t">✈️ 抵达 + 直飞云南</span><span class="days">Day 1–2</span></div>
+      <div class="stage-body">
+        <div class="trans">✈️ 多伦多 → 上海浦东（约 13–15h）→ 当天/次日 ✈️ 飞丽江 约 <b>¥600</b>。</div>
+        <p>落地后直奔云南，先用度假节奏把时差和状态调整好。</p>
+      </div>
     </div>
-  </div>
+    <div class="stage">
+      <div class="stage-head"><span class="n">2</span><span class="t">🏔 云南 5 天</span><span class="days">Day 2–7</span></div>
+      <div class="stage-body">
+        <p>丽江 2 晚 + 大理 3 晚，洱海边躺平、调好时差。详见「云南 5 天详细攻略」。</p>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-head"><span class="n">3</span><span class="t">🎉 南通 · 婚礼</span><span class="days">Day 7–10</span></div>
+      <div class="stage-body">
+        <div class="trans">✈️ 大理 → 上海/南通 飞机 约 <b>¥1,000</b>（往东北飞回，这段是折返）。</div>
+        <p><b>11/1 Yao 婚礼</b> 🎊，状态满满地参加。住南通家里 <span class="free">不花钱</span>。</p>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-head"><span class="n">4</span><span class="t">🍲 顺德 · 陪 Simon</span><span class="days">Day 10–13</span></div>
+      <div class="stage-body">
+        <div class="trans">✈️ 南通 → 广州 飞机 约 <b>¥700</b>；🚆 广州 → 顺德 城际 <b>¥30</b>。</div>
+        <p>顺德 3 晚，陪 Simon、吃美食。住顺德 <span class="free">不花钱</span>。</p>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-head"><span class="n">5</span><span class="t">✈️ 返程</span><span class="days">Day 13–14</span></div>
+      <div class="stage-body">
+        <p>顺德 → 广州 / 香港 → 多伦多。</p>
+      </div>
+    </div>
 
-  <div class="stage s5">
-    <div class="stage-head"><span class="n">5</span><span class="t">✈️ 返程</span><span class="days">Day 13–14</span></div>
-    <div class="stage-body">
-      <p>顺德 → 广州 / 香港 → 多伦多。</p>
-    </div>
-  </div>
+    <div class="cost">方案 B 交通费合计 ≈ ¥2,400 / 人（不含国际机票）</div>
+  </section>
 
   <div class="footer">
     <h3>怎么选？</h3>
