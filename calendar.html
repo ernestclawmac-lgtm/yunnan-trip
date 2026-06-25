@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>14 天行程日历 · 方案 A（婚礼 11/1）</title>
+<style>
+  :root{
+    --cream:#FBF6EC; --ink:#2B2B2B; --sub:#8a8a8a;
+    --blue:#2C7DA0; --green:#3E7E55; --terra:#C8603F; --teal:#159A93; --gold:#F2C14E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif;
+    background:var(--cream); color:var(--ink); line-height:1.6; padding:0 0 60px;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 14px}
+
+  header{background:var(--blue); color:#fff; padding:34px 24px 26px;border-radius:0 0 24px 24px;position:relative;overflow:hidden}
+  header .sun{position:absolute;top:20px;right:40px;width:62px;height:62px;border-radius:50%;background:var(--gold)}
+  header h1{font-size:32px;font-weight:800;position:relative}
+  header .zh{font-size:18px;font-weight:600;color:var(--gold);margin-top:5px;position:relative}
+  header .meta{font-size:13.5px;color:#D9ECF2;margin-top:8px;position:relative}
+
+  .protect{background:#E9F4EC;border:1px solid #c9e4d2;border-left:5px solid var(--green);
+    border-radius:12px;padding:13px 16px;margin:16px 0 8px;font-size:14px;color:#2c5d3c;line-height:1.8}
+  .protect b{color:var(--green)}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 6px;font-size:12.5px}
+  .legend span{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid #eee;
+    padding:4px 10px;border-radius:14px;color:#555}
+  .dot{width:12px;height:12px;border-radius:3px;display:inline-block}
+  .l-nt{background:#F6D58A} .l-yn{background:#9FD2D0} .l-sd{background:#A7D3A7} .l-tr{background:#d9d9d9}
+
+  .mtitle{font-size:18px;font-weight:800;color:var(--blue);margin:20px 0 8px}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+  .wd{font-size:12px;font-weight:700;color:#9a9a9a;text-align:center;padding:3px 0}
+  .cell{min-height:74px;border-radius:9px;background:#fff;border:1px solid #eee;padding:4px 5px;position:relative}
+  .cell.empty{background:transparent;border:none}
+  .cell .dnum{font-size:12px;font-weight:700;color:#aaa}
+  .cell.nt{background:#FBEFD6;border-color:#f0ddb4} .cell.yn{background:#E6F1F4;border-color:#cfe6e4}
+  .cell.sd{background:#E8F2E8;border-color:#cfe6cf} .cell.tr{background:#F0F0F0;border-color:#e2e2e2}
+  .cell.wed{background:#FCE6BE;border:2px solid var(--gold)}
+  .cell .chip{font-size:10.5px;line-height:1.35;margin-top:2px;color:#33414a;font-weight:600}
+  .cell .buf{display:inline-block;font-size:9.5px;font-weight:800;color:#2c5d3c;background:#cfe9d6;
+    border-radius:8px;padding:0 5px;margin-top:2px}
+  .cell .wj{font-size:13px;font-weight:800;color:#a8741c;margin-top:1px}
+  .cell .dnum.hl{color:#a8741c}
+
+  .flights{background:#fff;border:1px solid #eee;border-radius:14px;padding:14px 16px;margin:20px 0}
+  .flights h3{font-size:16px;font-weight:800;color:var(--blue);margin-bottom:8px}
+  .fl{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #f2f2f2;font-size:13.5px}
+  .fl:last-child{border-bottom:none}
+  .fl .fd{font-weight:800;color:var(--terra);white-space:nowrap;min-width:52px}
+  .fl .fi{font-size:18px;line-height:1.2}
+  .fl b{color:#2b2b2b}
+  .fl .note{color:#999;font-size:12px}
+
+  .links{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+  .links a{font-size:13.5px;font-weight:700;text-decoration:none;color:#fff;background:var(--teal);padding:8px 14px;border-radius:20px}
+  .links a.b2{background:var(--terra)}
+
+  .credit{text-align:center;color:var(--sub);font-size:12px;margin-top:20px;line-height:1.7}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sun"></div>
+  <h1>14 天行程日历</h1>
+  <div class="zh">方案 A · 先婚礼后旅游</div>
+  <div class="meta">多伦多 ⇄ 南通 · 含云南 + 顺德 · Yao 婚礼 11/1（周日）</div>
+</header>
+
+<div class="wrap">
+
+  <div class="protect">
+    🛡 <b>婚礼已保护</b>：飞机安排<b>提前 2 天落地</b>——10/30 抵上海转南通，留出 <b>10/30、10/31 两个缓冲日</b>。
+    即使国际航班延误或改签，也<b>不会耽误 11/1 的婚礼</b>。
+  </div>
+
+  <div class="legend">
+    <span><i class="dot l-nt"></i>南通（婚礼地）</span>
+    <span><i class="dot l-yn"></i>云南</span>
+    <span><i class="dot l-sd"></i>顺德</span>
+    <span><i class="dot l-tr"></i>赶路/返程</span>
+    <span>✈️ 航班 · 🚄 高铁 · 🎉 婚礼 · 🛡 缓冲日</span>
+  </div>
+
+  <div class="mtitle">2026 年 10 月</div>
+  <div class="cal" id="octCal"></div>
+
+  <div class="mtitle">2026 年 11 月</div>
+  <div class="cal" id="novCal"></div>
+
+  <div class="flights">
+    <h3>✈️ 航班 / 交通清单（按婚礼逆推 · 时间待订票后填实际起降）</h3>
+    <div class="fl"><span class="fd">10/29</span><span class="fi">✈️</span><div><b>多伦多 YYZ → 上海浦东 PVG</b>（直飞约 13–15h，跨夜）<br><span class="note">建议订当天晚班机，次日上午抵沪 → 留足缓冲</span></div></div>
+    <div class="fl"><span class="fd">10/30</span><span class="fi">🚄</span><div><b>上海 → 南通 高铁</b>（约 1.5h，¥77）<br><span class="note">🛡 缓冲日①：当天到南通和家人会合</span></div></div>
+    <div class="fl"><span class="fd">11/1</span><span class="fi">🎉</span><div><b>南通 · Yao 婚礼</b>（周日）<span class="note"> ← 受保护，前面有 2 天缓冲</span></div></div>
+    <div class="fl"><span class="fd">11/3</span><span class="fi">✈️</span><div><b>南通/上海 → 丽江</b>（约 4h，约 ¥600）<br><span class="note">云南 5 天开始（丽江 2 + 大理 3）</span></div></div>
+    <div class="fl"><span class="fd">11/5</span><span class="fi">🚄</span><div><b>丽江 → 大理 动车</b>（约 2h，约 ¥40）</div></div>
+    <div class="fl"><span class="fd">11/7</span><span class="fi">✈️</span><div><b>大理 → 广州 → 顺德</b>（飞机约 ¥900 + 城际 ¥30）<br><span class="note">顺德陪 Simon 3 晚</span></div></div>
+    <div class="fl"><span class="fd">11/10</span><span class="fi">✈️</span><div><b>顺德 → 广州/香港 → 多伦多</b>（跨夜返程，11/11 抵达）</div></div>
+  </div>
+
+  <div class="links">
+    <a href="https://ernestclawmac-lgtm.github.io/yunnan-trip/trip.html" target="_blank" rel="noopener">🗺 14 天总行程</a>
+    <a class="b2" href="https://ernestclawmac-lgtm.github.io/yunnan-trip/" target="_blank" rel="noopener">🏔 云南 5 天攻略</a>
+  </div>
+
+  <div class="credit">航班时间为占位示意，订票后可换成实际起降时间 · 婚礼 11/1 前已预留 2 个缓冲日</div>
+
+</div>
+
+<script>
+  // 事件数据：loc 决定底色，chips 是当天小标签，wedding/buffer 特殊标记
+  var EV = {
+    '2026-10-29':{loc:'tr',chips:['✈️ 多伦多→上海','起飞·跨夜']},
+    '2026-10-30':{loc:'nt',buffer:1,chips:['🛬 抵上海','🚄→南通']},
+    '2026-10-31':{loc:'nt',buffer:1,chips:['南通·陪家人']},
+    '2026-11-01':{loc:'nt',wedding:1,chips:['婚礼']},
+    '2026-11-02':{loc:'nt',chips:['南通·休整']},
+    '2026-11-03':{loc:'yn',chips:['✈️ 南通→丽江','云南 D1']},
+    '2026-11-04':{loc:'yn',chips:['玉龙雪山·D2']},
+    '2026-11-05':{loc:'yn',chips:['🚄 丽江→大理','云南 D3']},
+    '2026-11-06':{loc:'yn',chips:['洱海环线·D4']},
+    '2026-11-07':{loc:'sd',chips:['✈️ 大理→广州→顺德','云南 D5']},
+    '2026-11-08':{loc:'sd',chips:['顺德·陪 Simon']},
+    '2026-11-09':{loc:'sd',chips:['顺德']},
+    '2026-11-10':{loc:'tr',chips:['✈️ 顺德→多伦多','起飞·跨夜']},
+    '2026-11-11':{loc:'tr',chips:['🛬 抵多伦多']}
+  };
+  var WD=['日','一','二','三','四','五','六'];
+  function pad(n){return (n<10?'0':'')+n;}
+  function render(year,month,elId){ // month 1-based
+    var el=document.getElementById(elId); el.innerHTML='';
+    WD.forEach(function(d){var h=document.createElement('div');h.className='wd';h.textContent=d;el.appendChild(h);});
+    var first=new Date(year,month-1,1).getDay(); // 0=Sun
+    var days=new Date(year,month,0).getDate();
+    for(var i=0;i<first;i++){var c=document.createElement('div');c.className='cell empty';el.appendChild(c);}
+    for(var d=1;d<=days;d++){
+      var key=year+'-'+pad(month)+'-'+pad(d);
+      var ev=EV[key];
+      var c=document.createElement('div'); c.className='cell';
+      var num='<div class="dnum'+(ev&&ev.wedding?' hl':'')+'">'+d+'</div>';
+      var body='';
+      if(ev){
+        c.className+=' '+ev.loc;
+        if(ev.wedding) c.className+=' wed';
+        if(ev.wedding) body+='<div class="wj">🎉 婚礼</div>';
+        if(ev.buffer) body+='<div class="buf">🛡 缓冲日</div>';
+        (ev.chips||[]).forEach(function(t){body+='<div class="chip">'+t+'</div>';});
+      }
+      c.innerHTML=num+body; el.appendChild(c);
+    }
+  }
+  render(2026,10,'octCal');
+  render(2026,11,'novCal');
+</script>
+</body>
+</html>
