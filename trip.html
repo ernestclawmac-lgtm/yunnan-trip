@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>14 天总行程 · 多伦多 ⇄ 南通（含云南 + 顺德）</title>
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.css">
+<style>
+  :root{
+    --cream:#FBF6EC; --ink:#2B2B2B; --sub:#8a8a8a;
+    --blue:#2C7DA0; --green:#3E7E55; --terra:#C8603F; --lake:#4AA3C7; --gold:#F2C14E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,sans-serif;
+    background:var(--cream); color:var(--ink); line-height:1.6; padding:0 0 60px;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+  header{background:var(--blue); color:#fff; padding:36px 24px 28px;
+    border-radius:0 0 26px 26px; position:relative; overflow:hidden;}
+  header .sun{position:absolute;top:22px;right:44px;width:68px;height:68px;border-radius:50%;background:var(--gold)}
+  header h1{font-size:36px;font-weight:800;letter-spacing:1px;position:relative}
+  header .zh{font-size:20px;font-weight:600;color:var(--gold);margin-top:6px;position:relative}
+  header .meta{font-size:14px;color:#D9ECF2;margin-top:9px;position:relative}
+
+  .intro{background:#fff;border:1px solid #eee;border-radius:14px;padding:14px 18px;
+    margin:18px 0 6px;font-size:14px;color:#555;line-height:1.8}
+  .intro b{color:var(--terra)}
+  .ylink{display:inline-block;margin-top:8px;font-size:14px;font-weight:700;color:#fff;
+    background:var(--green);text-decoration:none;padding:8px 15px;border-radius:22px}
+
+  .planband{display:flex;align-items:center;gap:10px;margin:26px 0 4px;padding:14px 18px;
+    border-radius:16px;color:#fff;font-weight:800}
+  .planA{background:var(--terra)} .planB{background:var(--blue)}
+  .planband .pt{font-size:22px}
+  .planband .tag{font-size:12px;font-weight:700;background:rgba(255,255,255,.25);
+    padding:3px 10px;border-radius:20px;margin-left:auto}
+
+  .sum{background:#fff;border:1px solid #eee;border-radius:14px;padding:12px 16px;margin:10px 0;
+    font-size:14px;color:#444;line-height:1.85}
+  .sum b{color:var(--terra)}
+  .sum .route{color:var(--blue);font-weight:700}
+
+  .map{height:300px;border-radius:14px;margin:12px 0 6px;overflow:hidden;border:1px solid #e3e3e3;z-index:0}
+  .maphint{font-size:12px;color:#9a9a9a;margin-bottom:6px}
+  .leaflet-container{background:#dfe7ef}
+
+  .stage{background:#fff;border-radius:16px;margin:12px 0;overflow:hidden;box-shadow:0 2px 9px rgba(0,0,0,.05)}
+  .stage-head{display:flex;align-items:center;gap:12px;padding:13px 18px;color:#fff}
+  .s1{background:#C8603F}.s2{background:#2C7DA0}.s3{background:#3E7E55}.s4{background:#4AA3C7}.s5{background:#5C9A6B}
+  .stage-head .n{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.25);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex:0 0 auto}
+  .stage-head .t{font-size:18px;font-weight:800}
+  .stage-head .days{font-size:12px;font-weight:700;background:rgba(255,255,255,.22);
+    padding:3px 9px;border-radius:18px;margin-left:auto;white-space:nowrap}
+  .stage-body{padding:13px 18px 16px}
+  .stage-body p{font-size:14.5px;color:#444;margin-bottom:6px}
+  .trans{background:#EAF4F8;border:1px solid #d7e9f0;border-radius:11px;
+    padding:8px 12px;margin:4px 0 8px;font-size:13.5px;color:#2c6079;line-height:1.7}
+  .trans b{color:var(--blue)}
+  .free{display:inline-block;font-size:12px;font-weight:700;color:#3E7E55;background:#e9f3ec;
+    border:1px solid #cfe6d6;padding:2px 9px;border-radius:14px}
+
+  .footer{background:var(--blue);color:#EAF4F8;border-radius:18px;padding:20px 22px;margin-top:24px}
+  .footer h3{color:var(--gold);font-size:18px;margin-bottom:10px}
+  .footer p{font-size:14px;margin-bottom:7px}
+  .credit{text-align:center;color:var(--sub);font-size:12px;margin-top:22px;line-height:1.7}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sun"></div>
+  <h1>14 天总行程</h1>
+  <div class="zh">多伦多 ⇄ 南通 · 含云南 + 顺德</div>
+  <div class="meta">三兄弟同行 · Yao 婚礼 11/1（南通）· 两套方案任选</div>
+</header>
+
+<div class="wrap">
+
+  <div class="intro">
+    两个人从<b>多伦多</b>飞、一个本在南通。南通、顺德住朋友家 <span class="free">不花住宿费</span>。
+    下面 <b>方案 A</b>（先婚礼后旅游）和 <b>方案 B</b>（先旅游后婚礼）整条路线、交通、费用都列好了。<br>
+    国际机票建议订<b>「上海进 / 广州（或香港）出」联程</b>，省一大段折返。云南那 5 天的细节单独成页：
+    <a class="ylink" href="https://ernestclawmac-lgtm.github.io/yunnan-trip/" target="_blank" rel="noopener">👉 云南 5 天详细攻略 ›</a>
+  </div>
+
+  <!-- ===================== PLAN A ===================== -->
+  <div class="planband planA"><span class="pt">方案 A</span> 先婚礼，后旅游
+    <span class="tag">★ 推荐 · 不走回头路</span></div>
+
+  <div class="sum">
+    <span class="route">路线：上海 → 南通 → 丽江 → 大理 → 广州/顺德 → 回程</span><br>
+    一路向南、几乎不折返，最后从广东出境最顺。交通费（不含国际机票）约 <b>¥1,680/人</b>。
+  </div>
+
+  <div class="map" id="mapA"></div>
+  <div class="maphint">数字 = 城市先后顺序 · 虚线 = 走的路线（A 一路向南）</div>
+
+  <div class="stage s1">
+    <div class="stage-head"><span class="n">1</span><span class="t">✈️ 抵达中国</span><span class="days">Day 1–2</span></div>
+    <div class="stage-body">
+      <div class="trans">✈️ 多伦多 → 上海浦东 直飞约 <b>13–15 小时</b>；🚄 浦东 → 南通高铁 <b>¥77 · 约 1.5h</b>。</div>
+      <p>落地上海，高铁直接到南通，先和家人会合、休整倒时差。</p>
+    </div>
+  </div>
+
+  <div class="stage s2">
+    <div class="stage-head"><span class="n">2</span><span class="t">🎉 南通 · 婚礼</span><span class="days">Day 2–4</span></div>
+    <div class="stage-body">
+      <p><b>11/1 Yao 婚礼</b> 🎊，前后陪家人、走动走动。住南通家里 <span class="free">不花钱</span>。</p>
+    </div>
+  </div>
+
+  <div class="stage s3">
+    <div class="stage-head"><span class="n">3</span><span class="t">🏔 云南 5 天</span><span class="days">Day 4–9</span></div>
+    <div class="stage-body">
+      <div class="trans">✈️ 南通/上海 → 丽江 飞机 约 <b>¥600 · 4h</b>（高铁要 18h，不考虑）。</div>
+      <p>丽江 2 晚（古城 + 玉龙雪山）+ 大理 3 晚（洱海躺平）。详细每天安排见上方「云南 5 天详细攻略」。</p>
+    </div>
+  </div>
+
+  <div class="stage s4">
+    <div class="stage-head"><span class="n">4</span><span class="t">🍲 顺德 · 陪 Simon</span><span class="days">Day 9–12</span></div>
+    <div class="stage-body">
+      <div class="trans">✈️ 大理 → 广州 飞机 约 <b>¥900</b>；🚆 广州 → 顺德 城际/地铁 <b>¥30 · 40min</b>。</div>
+      <p>顺德 3 晚，陪 Simon、吃遍顺德双皮奶与鱼生。住顺德 <span class="free">不花钱</span>。</p>
+    </div>
+  </div>
+
+  <div class="stage s5">
+    <div class="stage-head"><span class="n">5</span><span class="t">✈️ 返程</span><span class="days">Day 12–13</span></div>
+    <div class="stage-body">
+      <p>顺德 → 广州 / 香港 → 多伦多。建议联程机票从广州或香港直接回，不用再北上回上海。</p>
+    </div>
+  </div>
+
+  <!-- ===================== PLAN B ===================== -->
+  <div class="planband planB"><span class="pt">方案 B</span> 先旅游，后婚礼
+    <span class="tag">婚礼当天状态最好</span></div>
+
+  <div class="sum">
+    <span class="route">路线：上海 → 丽江 → 大理 → 南通 → 顺德 → 回程</span><br>
+    先去云南把时差倒过来，婚礼当天精神最好；代价是云南→南通要折返、多一段长途，交通费约 <b>¥2,400/人</b>。
+  </div>
+
+  <div class="map" id="mapB"></div>
+  <div class="maphint">数字 = 城市先后顺序 · 看得出 B 在云南和南通之间有一段折返</div>
+
+  <div class="stage s1">
+    <div class="stage-head"><span class="n">1</span><span class="t">✈️ 抵达 + 直飞云南</span><span class="days">Day 1–2</span></div>
+    <div class="stage-body">
+      <div class="trans">✈️ 多伦多 → 上海浦东（约 13–15h）→ 当天/次日 ✈️ 飞丽江 约 <b>¥600</b>。</div>
+      <p>落地后直奔云南，先用度假节奏把时差和状态调整好。</p>
+    </div>
+  </div>
+
+  <div class="stage s3">
+    <div class="stage-head"><span class="n">2</span><span class="t">🏔 云南 5 天</span><span class="days">Day 2–7</span></div>
+    <div class="stage-body">
+      <p>丽江 2 晚 + 大理 3 晚，洱海边躺平、调好时差。详细见「云南 5 天详细攻略」。</p>
+    </div>
+  </div>
+
+  <div class="stage s2">
+    <div class="stage-head"><span class="n">3</span><span class="t">🎉 南通 · 婚礼</span><span class="days">Day 7–10</span></div>
+    <div class="stage-body">
+      <div class="trans">✈️ 大理 → 上海/南通 飞机 约 <b>¥1,000</b>（往东北飞回，这段是折返）。</div>
+      <p><b>11/1 Yao 婚礼</b> 🎊，状态满满地参加。住南通家里 <span class="free">不花钱</span>。</p>
+    </div>
+  </div>
+
+  <div class="stage s4">
+    <div class="stage-head"><span class="n">4</span><span class="t">🍲 顺德 · 陪 Simon</span><span class="days">Day 10–13</span></div>
+    <div class="stage-body">
+      <div class="trans">✈️ 南通 → 广州 飞机 约 <b>¥700</b>；🚆 广州 → 顺德 城际 <b>¥30</b>。</div>
+      <p>顺德 3 晚，陪 Simon、吃美食。住顺德 <span class="free">不花钱</span>。</p>
+    </div>
+  </div>
+
+  <div class="stage s5">
+    <div class="stage-head"><span class="n">5</span><span class="t">✈️ 返程</span><span class="days">Day 13–14</span></div>
+    <div class="stage-body">
+      <p>顺德 → 广州 / 香港 → 多伦多。</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <h3>怎么选？</h3>
+    <p>· <b style="color:#F2C14E">方案 A（推荐）</b>：路线一路向南最顺、交通费更低（约 ¥1,680/人），最后从广州/香港直接回。唯一要忍的是落地隔天就办婚礼、可能带点时差。</p>
+    <p>· <b style="color:#F2C14E">方案 B</b>：先在云南倒好时差、婚礼当天状态最好，但要折返、交通费约 ¥2,400/人（多约 ¥700）。</p>
+    <p style="margin-top:8px">· 两案住宿：南通、顺德住朋友家不花钱；云南 5 天约 ¥3000–3500/人。国际机票另计。</p>
+  </div>
+
+  <div class="credit">价格为 2025–2026 淡季公开参考价 · 11 月为云南淡季，机票酒店偏便宜 · 实际以购票当日为准</div>
+
+</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+  var CITY = {
+    sh:['上海 抵达',31.23,121.47], nt:['南通 婚礼',31.98,120.89],
+    lj:['丽江',26.87,100.23], dl:['大理',25.69,100.16], gz:['广州·顺德',22.95,113.27]
+  };
+  var PLANS = [
+    { el:'mapA', color:'#C8603F', seq:['sh','nt','lj','dl','gz'] },
+    { el:'mapB', color:'#2C7DA0', seq:['sh','lj','dl','nt','gz'] }
+  ];
+  function cityIcon(n,color){
+    return L.divIcon({className:'',iconSize:[30,30],iconAnchor:[15,15],
+      html:'<div style="background:'+color+';color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.5)">'+n+'</div>'});
+  }
+  function buildPlan(cfg){
+    var m=L.map(cfg.el,{zoomControl:true,scrollWheelZoom:false,attributionControl:false});
+    L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}',
+      {subdomains:['1','2','3','4'],maxZoom:18,minZoom:3}).addTo(m);
+    var pts=[],bounds=[];
+    cfg.seq.forEach(function(key,i){
+      var c=CITY[key]; var ll=[c[1],c[2]]; pts.push(ll); bounds.push(ll);
+      L.marker(ll,{icon:cityIcon(i+1,cfg.color)}).addTo(m).bindPopup((i+1)+'. '+c[0]);
+    });
+    L.polyline(pts,{color:cfg.color,weight:3,dashArray:'8,8',opacity:.85}).addTo(m);
+    m.fitBounds(L.latLngBounds(bounds).pad(0.18));
+  }
+  window.addEventListener('load',function(){
+    if(typeof L==='undefined'){return;}
+    PLANS.forEach(function(c){ try{ buildPlan(c); }catch(e){} });
+  });
+</script>
+</body>
+</html>
